@@ -151,6 +151,46 @@
     return { mg: mg, sources: parts.length ? parts.join(" + ") : "none logged today" };
   }
 
+  /* Macro split donut (estimated): % by calories (protein/carbs 4 kcal/g, fat 9).
+     Falls back to summing meals when day-level carbs/fat are missing. */
+  function sumMacro(meals, key) {
+    var t = 0;
+    (meals || []).forEach(function (m) { t += m[key] || 0; });
+    return t;
+  }
+
+  function macroDonut(day) {
+    var p = day.protein || 0;
+    var c = (typeof day.carbs === "number") ? day.carbs : sumMacro(day.meals, "carbs");
+    var f = (typeof day.fat === "number") ? day.fat : sumMacro(day.meals, "fat");
+    var pc = p * 4, cc = c * 4, fc = f * 9;
+    var tot = pc + cc + fc;
+    if (tot <= 0) return "";
+    var r = 34, circ = 2 * Math.PI * r;
+    var segs = [
+      { label: "Protein", g: Math.round(p), cal: pc, color: "var(--macro-protein)" },
+      { label: "Carbs", g: Math.round(c), cal: cc, color: "var(--macro-carbs)" },
+      { label: "Fat", g: Math.round(f), cal: fc, color: "var(--macro-fat)" }
+    ];
+    var off = 0, circles = "";
+    segs.forEach(function (s) {
+      var len = s.cal / tot * circ;
+      circles += '<circle cx="45" cy="45" r="' + r + '" fill="none" stroke="' + s.color +
+        '" stroke-width="14" stroke-dasharray="' + len.toFixed(1) + " " + circ.toFixed(1) +
+        '" stroke-dashoffset="' + (-off).toFixed(1) + '"/>';
+      off += len;
+    });
+    var legend = segs.map(function (s) {
+      return '<div><i class="dot" style="background:' + s.color + '"></i>' + s.label +
+        ' <span class="mg">' + s.g + 'g</span> <span class="mp">\u00b7 ' +
+        Math.round(s.cal / tot * 100) + '%</span></div>';
+    }).join("");
+    return '<div class="macro-wrap"><div class="macro-donut">' +
+      '<svg width="90" height="90" viewBox="0 0 90 90">' + circles + "</svg></div>" +
+      '<div class="macro-legend">' + legend + "</div></div>" +
+      '<p class="est-note">Macro split estimated from logged foods.</p>';
+  }
+
   function render(meals, health, stale) {
     var day = meals.day, goal = meals.proteinGoal || 160, wk = meals.week;
 
@@ -168,20 +208,20 @@
       '<div class="col">' +
       '<div class="col-label"><span>Food intake \u00b7 today</span><span class="pct">' +
       Math.round(pPct * 100) + "%</span></div>" +
-      '<div class="big-serif">' + day.protein + "g protein</div>" +
+      '<div class="big-num">' + day.protein + "g protein</div>" +
       '<p class="sub">' + Math.max(0, goal - day.protein) + "g remaining toward the " + goal + "g daily minimum.</p>" +
       '<div class="bar"><div style="width:' + Math.min(100, pPct * 100).toFixed(1) + '%"></div></div>' +
       '<div class="mini-row">' +
       '<div class="mini"><div class="n">~' + day.calories.toLocaleString() + '</div><div class="l">calories today</div></div>' +
       '<div class="mini"><div class="n">' + entries + '</div><div class="l">entries today</div></div>' +
-      "</div></div>";
+      "</div>" + macroDonut(day) + "</div>";
 
     var mi = (health.distanceKm * 0.621371).toFixed(2);
     var syncT = health.updated ? fmtTime(health.updated) : "";
     var col2 =
       '<div class="col">' +
       '<div class="col-label"><span>Activity \u00b7 today</span></div>' +
-      '<div class="big-serif">' + health.steps.toLocaleString() + " steps</div>" +
+      '<div class="big-num">' + health.steps.toLocaleString() + " steps</div>" +
       '<p class="sub">' + health.activeKcal + " active kcal \u00b7 " + health.distanceKm + " km (" + mi + " mi)</p>" +
       '<div class="sync-note">' + (syncT ? "As of " + syncT + " \u00b7 partial day" : "Partial day") + "</div>" +
       "</div>";
@@ -195,7 +235,7 @@
     var col3 =
       '<div class="col">' +
       '<div class="col-label"><span>Last night\u2019s sleep</span></div>' +
-      '<div class="big-serif">' + fmtDurHm(totalMin) + "</div>" +
+      '<div class="big-num">' + fmtDurHm(totalMin) + "</div>" +
       '<p class="sub">' + esc(s.bedtime) + "\u2013" + esc(s.wake) + " \u00b7 " + s.efficiency + "% efficiency</p>" +
       '<div class="stackbar">' +
       '<div style="width:' + wDeep + '%;background:var(--deep-blue)"></div>' +
@@ -321,10 +361,14 @@
       var flags = (m.flags || []).map(function (f) {
         return '<span class="flag">' + esc(f) + "</span>";
       }).join("");
+      var mHead = "~" + m.calories + " cal \u00b7 ~" + m.protein + "g protein";
+      if (typeof m.carbs === "number" && typeof m.fat === "number") {
+        mHead += " \u00b7 " + m.carbs + "g carbs \u00b7 " + m.fat + "g fat";
+      }
       return (
         '<div class="meal"><div class="meal-head">' +
         '<span class="name">' + esc(m.name) + "</span>" +
-        '<span class="macros">~' + m.calories + " cal \u00b7 ~" + m.protein + "g protein</span>" +
+        '<span class="macros">' + esc(mHead) + "</span>" +
         "</div><ul>" + items + "</ul>" +
         (flags ? '<div class="flags">' + flags + "</div>" : "") +
         "</div>"

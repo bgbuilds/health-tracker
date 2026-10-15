@@ -19,6 +19,9 @@
     --deep-blue:#3f6fb5;
     --rem-purple:#7b5fc0;
     --core-green:#8aa864;
+    --macro-protein:#d97706;
+    --macro-carbs:#5b8c5a;
+    --macro-fat:#5b7fa6;
     --serif:Georgia,"Times New Roman",Times,serif;
     --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
@@ -26,6 +29,7 @@
   body{
     margin:0;background:var(--bg);color:var(--ink);
     font-family:var(--sans);font-size:15px;line-height:1.45;
+    font-variant-numeric:tabular-nums;
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:1080px;margin:0 auto;padding:22px 20px 64px}
@@ -73,14 +77,24 @@
   }
   .col-label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--muted);font-weight:600}
   .col-label .pct{color:var(--green);font-weight:700}
-  .big-serif{font-family:var(--serif);font-weight:700;font-size:46px;letter-spacing:-.5px;margin:8px 0 4px;line-height:1.05}
+  .big-num{font-family:var(--sans);font-weight:800;font-size:46px;letter-spacing:-.5px;margin:8px 0 4px;line-height:1.05;font-variant-numeric:tabular-nums}
   .sub{font-size:14px;color:var(--muted);margin:0}
   .bar{height:10px;background:var(--amber-track);border-radius:999px;overflow:hidden;margin-top:14px}
   .bar > div{height:100%;background:linear-gradient(90deg,#e8930c,#d97706);border-radius:999px}
   .mini-row{display:flex;gap:36px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
-  .mini .n{font-size:21px;font-weight:800;letter-spacing:-.3px}
+  .mini .n{font-size:21px;font-weight:800;letter-spacing:-.3px;font-variant-numeric:tabular-nums}
   .mini .l{font-size:13px;color:var(--muted);margin-top:2px}
   .sync-note{font-size:13px;color:var(--muted);margin-top:14px}
+
+  /* Macro donut */
+  .macro-wrap{display:flex;align-items:center;gap:18px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+  .macro-donut{flex:none}
+  .macro-donut svg{transform:rotate(-90deg)}
+  .macro-legend{font-size:13px;display:grid;gap:7px}
+  .macro-legend .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px}
+  .macro-legend .mg{font-weight:700;font-variant-numeric:tabular-nums}
+  .macro-legend .mp{color:var(--muted);font-variant-numeric:tabular-nums}
+  .est-note{font-size:12px;color:var(--muted);font-style:italic;margin:8px 0 0}
 
   /* Sleep stacked bar */
   .stackbar{display:flex;height:10px;border-radius:999px;overflow:hidden;margin-top:14px;background:var(--amber-track)}
@@ -93,7 +107,7 @@
   .ring{position:relative;width:104px;height:104px;flex:none}
   .ring svg{transform:rotate(-90deg)}
   .ring .center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}
-  .ring .center .big{font-family:var(--serif);font-weight:700;font-size:21px;line-height:1.1}
+  .ring .center .big{font-family:var(--sans);font-weight:800;font-size:21px;line-height:1.1;font-variant-numeric:tabular-nums}
   .ring .center .small{font-size:11px;color:var(--muted)}
 
   /* Sections */
@@ -106,7 +120,7 @@
   .sig-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
   .sig-label{font-size:14px;font-weight:700}
   .sig-target{font-size:12px;color:var(--muted);white-space:nowrap}
-  .sig-big{font-family:var(--serif);font-weight:700;font-size:33px;letter-spacing:-.4px;margin:10px 0 4px}
+  .sig-big{font-family:var(--sans);font-weight:800;font-size:33px;letter-spacing:-.4px;margin:10px 0 4px;font-variant-numeric:tabular-nums}
   .sig-muted{font-size:13px;color:var(--muted);margin:0}
   .sig-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
   .tag{font-size:12px;background:#f6f1e5;border:1px solid var(--border);color:#5c5546;border-radius:999px;padding:3px 11px}
@@ -123,7 +137,7 @@
   @media(min-width:820px){.nutri-grid{grid-template-columns:repeat(3,1fr)}}
   .nutri{background:#fbf8f0;border:1px solid var(--border);border-radius:10px;padding:12px 14px}
   .nutri .n{font-weight:700;font-size:14px}
-  .nutri .p{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--amber);margin:3px 0}
+  .nutri .p{font-family:var(--sans);font-weight:800;font-size:21px;color:var(--amber);margin:3px 0;font-variant-numeric:tabular-nums}
   .nutri .p small{font-size:11px;font-family:var(--sans);font-weight:400}
   .nutri .t{font-size:12px;color:var(--muted)}
   .caveat{font-size:12px;color:var(--muted);font-style:italic;margin:12px 0 0}
@@ -133,7 +147,7 @@
   .meal:first-of-type{border-top:0;padding-top:4px}
   .meal-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
   .meal-head .name{font-weight:800;font-size:16px}
-  .meal-head .macros{font-size:13px;color:var(--muted);white-space:nowrap}
+  .meal-head .macros{font-size:13px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
   .meal ul{margin:6px 0 0;padding-left:18px;font-size:14px;color:#3a362e}
   .meal li{margin:3px 0}
   .flags{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
@@ -207,10 +221,10 @@
 <script>
 /* Fallback snapshot baked in so the page still renders from file:// or offline.
    Fresh data is fetched from ./meals.json and ./health.json when hosted. */
-const FALLBACK_MEALS = {"date":"2026-10-15","day":{"calories":1887,"meals":[{"calories":780,"flags":["simple carbs (donut)"],"items":["3 fried eggs (~270 cal, ~19g protein)","4 fingerling potatoes (~130 cal, ~3g protein)","1 apple cider donut (~380 cal, ~4g protein)"],"name":"Breakfast","protein":26},{"calories":120,"flags":[],"items":["12 oz with regular milk"],"name":"Cappuccino","protein":8},{"calories":717,"flags":["contains gluten (flour/panko)"],"items":["Chicken schnitzel (~350 cal, ~35g protein)","Golden turmeric rice (~220 cal, ~4g protein)","Iceberg/carrot/cucumber salad (~25 cal, ~1g protein)","Tzatziki (~40 cal, ~4g protein)","Sunflower seeds, half serving (~82 cal, ~3g protein)"],"name":"Lunch","protein":47},{"name":"Snack","items":["Cantaloupe, ~1/2 cup cubed"],"calories":30,"protein":1,"flags":[]},{"name":"Cappuccinos (2)","items":["2x 12 oz with regular milk"],"calories":240,"protein":16,"flags":[]}],"protein":98,"caffeineMg":450},"nutrients":[{"name":"Fiber","note":"chickpeas, peas, vegetables","pct":"30-40%"},{"name":"Calcium","note":"tzatziki, yogurt","pct":"20-30%"},{"name":"Iron","note":"chicken, chickpeas, sesame","pct":"35-45%"},{"name":"Potassium","note":"potatoes, cucumber","pct":"40-50%"},{"name":"Vitamin D","note":"eggs; low - consider sun/supplement","pct":"10-15%"},{"name":"Omega-3","note":"eggs, seeds","pct":"15-25%"}],"proteinGoal":160,"updated":"2026-10-15T16:35:00-04:00","week":{"plantGoal":30,"plantList":["chickpea (chana dal)","peas","carrots","fingerling potato","apple","coffee","basmati rice","turmeric","black pepper","cumin","olive oil","wheat","sesame seed","mustard seed","canola oil","iceberg lettuce","cucumber","garlic","shallot","lemon","dill","mint","sunflower seed","cantaloupe"],"plants":24}};
-const FALLBACK_HEALTH = {"updated":"2026-10-15T15:00:20-04:00","date":"2026-10-15","steps":3296,"activeKcal":97.2,"distanceKm":2.28,"sleep":{"bedtime":"10:20 PM","wake":"8:41 AM","asleepHrs":9.6,"deepMin":108,"remMin":139,"efficiency":92.6,"note":"restless until ~2 AM"}};
+const FALLBACK_MEALS = {"date":"2026-10-15","day":{"calories":2637,"meals":[{"calories":780,"flags":["simple carbs (donut)"],"items":["3 fried eggs (~270 cal, ~19g protein)","4 fingerling potatoes (~130 cal, ~3g protein)","1 apple cider donut (~380 cal, ~4g protein)"],"name":"Breakfast","protein":26,"carbs":51,"fat":41},{"calories":120,"flags":[],"items":["12 oz with regular milk"],"name":"Cappuccino","protein":8,"carbs":10,"fat":5},{"calories":717,"flags":["contains gluten (flour/panko)"],"items":["Chicken schnitzel (~350 cal, ~35g protein)","Golden turmeric rice (~220 cal, ~4g protein)","Iceberg/carrot/cucumber salad (~25 cal, ~1g protein)","Tzatziki (~40 cal, ~4g protein)","Sunflower seeds, half serving (~82 cal, ~3g protein)"],"name":"Lunch","protein":47,"carbs":71,"fat":22},{"name":"Snack","items":["Cantaloupe, ~1/2 cup cubed"],"calories":30,"protein":1,"flags":[],"carbs":7,"fat":0},{"name":"Cappuccinos (2)","items":["2x 12 oz with regular milk"],"calories":240,"protein":16,"flags":[],"carbs":20,"fat":10},{"name":"LUNA Lemon Zest bar","items":["1 bar (48g)"],"calories":190,"protein":8,"flags":["ultra-processed (packaged bar)"],"carbs":28,"fat":6},{"name":"Dinner","items":["Roast chicken, ~5 oz (~230 cal, ~38g protein)","1 hard boiled egg (~70 cal, ~6g protein)","Shredded carrot (~15 cal, ~1g protein)","Celery (~5 cal)","Cucumber (~10 cal)","Romaine (~15 cal, ~1g protein)","Spicy coconut dressing, ~2 tbsp (~95 cal, ~1g protein)"],"calories":440,"protein":46,"flags":[],"carbs":15,"fat":21},{"name":"Snack","items":["ONLY Snacks crunchy roasted edamame, sea salt (1 pack)"],"calories":120,"protein":14,"flags":[],"carbs":9,"fat":3.5}],"protein":166,"caffeineMg":450,"carbs":211,"fat":109},"nutrients":[{"name":"Fiber","note":"chickpeas, peas, vegetables","pct":"30-40%"},{"name":"Calcium","note":"tzatziki, yogurt","pct":"20-30%"},{"name":"Iron","note":"chicken, chickpeas, sesame","pct":"35-45%"},{"name":"Potassium","note":"potatoes, cucumber","pct":"40-50%"},{"name":"Vitamin D","note":"eggs; low - consider sun/supplement","pct":"10-15%"},{"name":"Omega-3","note":"eggs, seeds","pct":"15-25%"}],"proteinGoal":160,"updated":"2026-10-15T18:20:00-04:00","week":{"plantGoal":50,"plantList":["chickpea (chana dal)","peas","carrots","fingerling potato","apple","coffee","basmati rice","turmeric","black pepper","cumin","olive oil","wheat","sesame seed","mustard seed","canola oil","iceberg lettuce","cucumber","garlic","shallot","lemon","dill","mint","sunflower seed","cantaloupe","oats","soy","chicory","celery","coconut","chili"],"plants":30}};
+const FALLBACK_HEALTH = {"updated": "2026-10-15T21:57:47+00:00", "date": "2026-10-15", "steps": 8778, "activeKcal": 369.2, "distanceKm": 6.59, "sleep": {"bedtime": "10:20 PM", "wake": "8:41 AM", "asleepHrs": 9.6, "deepMin": 108, "remMin": 139, "efficiency": 92.6, "note": "restless until ~2 AM"}};
 </script>
 <!-- Bump the ?v= query below on every code change so browsers fetch fresh JS/CSS instead of a cached copy. -->
-<script src="./app.js?v=20261015e"></script>
+<script src="./app.js?v=20261015f"></script>
 </body>
 </html>
