@@ -132,6 +132,25 @@
     return { servings: servings, names: names };
   }
 
+  /* Caffeine: prefer an explicit caffeineMg on the day object; otherwise
+     estimate from logged drinks (150mg per cappuccino, 95mg per coffee). */
+  function caffeineInfo(day) {
+    var mg = (day && typeof day.caffeineMg === "number") ? day.caffeineMg : null;
+    var capp = 0, coff = 0;
+    (day.meals || []).forEach(function (m) {
+      var n = (m.name || "").toLowerCase();
+      var qty = 1, paren = n.match(/\((\d+)\)/);
+      if (paren) qty = parseInt(paren[1], 10);
+      if (n.indexOf("cappuccino") !== -1) capp += qty;
+      else if (n.indexOf("coffee") !== -1 || n.indexOf("espresso") !== -1) coff += qty;
+    });
+    if (mg === null) mg = capp * 150 + coff * 95;
+    var parts = [];
+    if (capp > 0) parts.push(capp + " cappuccino" + (capp > 1 ? "s" : ""));
+    if (coff > 0) parts.push(coff + " coffee" + (coff > 1 ? "s" : ""));
+    return { mg: mg, sources: parts.length ? parts.join(" + ") : "none logged today" };
+  }
+
   function render(meals, health, stale) {
     var day = meals.day, goal = meals.proteinGoal || 160, wk = meals.week;
 
@@ -271,12 +290,28 @@
       wk.plantList.map(function (p) { return '<span class="chip">' + esc(p) + "</span>"; }).join("");
 
     /* ---- Key nutrients ---- */
+    var caf = caffeineInfo(day);
+    var GUIDE = 400, SCALE = 600;
+    var cafBase = Math.min(caf.mg, GUIDE) / SCALE * 100;
+    var cafOver = Math.max(0, caf.mg - GUIDE) / SCALE * 100;
+    var cafDelta = caf.mg > GUIDE
+      ? (caf.mg - GUIDE) + "mg over the " + GUIDE + "mg guideline"
+      : (GUIDE - caf.mg) + "mg under the " + GUIDE + "mg guideline";
+    var cafCard =
+      '<div class="nutri"><div class="n">Caffeine</div>' +
+      '<div class="p">~' + caf.mg + ' <small>mg</small></div>' +
+      '<div class="t">' + esc(caf.sources) + " \u00b7 " + esc(cafDelta) + "</div>" +
+      '<div class="up-bar" style="margin-top:10px">' +
+      '<div class="up-fill" style="width:' + cafBase.toFixed(1) + '%"></div>' +
+      (cafOver > 0 ? '<div class="up-fill" style="width:' + cafOver.toFixed(1) + '%;left:' + cafBase.toFixed(1) + '%;background:#b45309"></div>' : "") +
+      '<div class="up-marker" style="left:' + (GUIDE / SCALE * 100).toFixed(1) + '%"></div></div>' +
+      '<div class="t" style="margin-top:6px">~400mg/day is the commonly cited adult guideline (FDA/EFSA).</div></div>';
     document.getElementById("nutri-grid").innerHTML =
       meals.nutrients.map(function (n) {
         return '<div class="nutri"><div class="n">' + esc(n.name) + "</div>" +
           '<div class="p">' + esc(n.pct) + ' <small>DV</small></div>' +
           '<div class="t">' + esc(n.note) + "</div></div>";
-      }).join("");
+      }).join("") + cafCard;
 
     /* ---- Food log ---- */
     document.getElementById("foodlog-sub").textContent =
