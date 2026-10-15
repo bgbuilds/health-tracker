@@ -173,7 +173,8 @@
     var wDeep = (s.deepMin / totalMin * 100).toFixed(1),
         wRem = (s.remMin / totalMin * 100).toFixed(1),
         wCore = Math.max(0, 100 - parseFloat(wDeep) - parseFloat(wRem)).toFixed(1);
-    var sleepHtml =
+    var col3 =
+      '<div class="col">' +
       '<div class="col-label"><span>Last night\u2019s sleep</span></div>' +
       '<div class="big-serif">' + fmtDurHm(totalMin) + "</div>" +
       '<p class="sub">' + esc(s.bedtime) + "\u2013" + esc(s.wake) + " \u00b7 " + s.efficiency + "% efficiency</p>" +
@@ -187,10 +188,10 @@
       '<span><i class="dot" style="background:var(--rem-purple)"></i>REM ' + fmtDurHm(s.remMin) + "</span>" +
       '<span><i class="dot" style="background:var(--core-green)"></i>Core ' + fmtDurHm(coreMin) + "</span>" +
       "</div>" +
-      (s.note ? '<div class="sync-note">' + esc(s.note) + "</div>" : "");
+      (s.note ? '<div class="sync-note">' + esc(s.note) + "</div>" : "") +
+      "</div>";
 
-    document.getElementById("panel-day").innerHTML = col1 + col2;
-    document.getElementById("sleep-content").innerHTML = sleepHtml;
+    document.getElementById("panel-day").innerHTML = col1 + col2 + col3;
 
     /* ---- Health summary: Week panel ---- */
     var wPct = wk.plants / wk.plantGoal;
@@ -299,7 +300,7 @@
   function errorState() {
     document.getElementById("updated").textContent = "";
     document.getElementById("stale-note").classList.add("show");
-    ["panel-day", "signal-cards", "plant-summary", "nutri-grid", "food-meals", "sleep-content"].forEach(function (id) {
+    ["panel-day", "signal-cards", "plant-summary", "nutri-grid", "food-meals"].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.innerHTML = '<p style="font-size:14px;color:#6f695c">Data unavailable right now.</p>';
     });
