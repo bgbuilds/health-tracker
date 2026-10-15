@@ -7,125 +7,198 @@
 <title>Health Tracker</title>
 <style>
   :root{
-    --cream:#faf5ea;
+    --bg:#faf7f0;
     --card:#ffffff;
-    --ink:#141414;
-    --muted:#6b6257;
+    --border:#e9e1d0;
+    --ink:#191713;
+    --muted:#6f695c;
+    --faint:#a39c8b;
     --amber:#d97706;
-    --amber-soft:#fef3e2;
-    --amber-border:#f3d9a8;
-    --track:#ece5d5;
+    --amber-track:#f0e7d3;
+    --green:#2e5b3e;
+    --deep-blue:#3f6fb5;
+    --rem-purple:#7b5fc0;
+    --core-green:#8aa864;
+    --serif:Georgia,"Times New Roman",Times,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
   body{
-    margin:0;
-    background:var(--cream);
-    color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-size:15px;line-height:1.45;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:520px;margin:0 auto;padding:16px 16px 48px}
-  header.page{padding:8px 4px 0}
-  header.page h1{margin:0;font-size:30px;font-weight:800;letter-spacing:-.5px}
-  header.page .rule{height:4px;background:var(--amber);border-radius:2px;margin:10px 0 6px;max-width:120px}
-  .updated{font-size:13px;color:var(--muted);margin:0 0 4px}
+  .wrap{max-width:1080px;margin:0 auto;padding:22px 20px 64px}
+
+  /* Header */
+  .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+  .page-head h1{
+    font-family:var(--serif);font-weight:700;letter-spacing:-1px;
+    font-size:clamp(42px,7.5vw,72px);line-height:1.02;margin:0;
+  }
+  .head-meta{text-align:right;padding-bottom:6px}
+  .week-range{font-weight:700;font-size:17px}
+  .updated{font-size:14px;color:var(--muted);margin-top:4px}
+  .green-rule{height:4px;background:var(--green);margin:18px 0 0}
   .stale-note{
-    display:none;margin:10px 0;padding:10px 12px;font-size:13px;
-    background:#fff7e6;border:1px solid var(--amber-border);border-radius:10px;color:#7a4a00;
+    display:none;margin:14px 0 0;padding:10px 14px;font-size:13px;
+    background:#fff7e6;border:1px solid #f3d9a8;border-radius:10px;color:#7a4a00;
   }
   .stale-note.show{display:block}
-  section.card{
-    background:var(--card);border-radius:16px;padding:16px;margin:14px 0;
-    box-shadow:0 1px 3px rgba(60,40,10,.07);
+
+  /* Cards */
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:22px;margin-top:22px;
   }
-  section.card h2{margin:0 0 12px;font-size:18px;font-weight:800;letter-spacing:-.2px}
-  .toggle{display:flex;background:var(--track);border-radius:999px;padding:4px;margin-bottom:14px}
-  .toggle button{
-    flex:1;border:0;background:transparent;border-radius:999px;padding:9px 0;
-    font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;
+  .card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+  .label{font-size:15px;font-weight:700}
+  .pill-toggle{display:inline-flex;background:#f1ebdd;border-radius:999px;padding:4px}
+  .pill-toggle button{
+    border:0;background:transparent;border-radius:999px;padding:7px 20px;
+    font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;font-family:var(--sans);
   }
-  .toggle button.active{background:var(--ink);color:#fff}
-  .stat-row{display:flex;gap:12px}
-  .stat{flex:1;background:var(--amber-soft);border:1px solid var(--amber-border);border-radius:12px;padding:12px}
-  .stat .num{font-size:24px;font-weight:800}
-  .stat .lbl{font-size:12px;color:var(--muted);margin-top:2px}
-  .bar{height:12px;background:var(--track);border-radius:999px;overflow:hidden;margin-top:10px}
-  .bar > div{height:100%;background:linear-gradient(90deg,#f59e0b,#d97706);border-radius:999px}
-  .protein-line{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px}
-  .protein-line .big{font-size:22px;font-weight:800}
-  .protein-line .small{font-size:13px;color:var(--muted)}
-  .ring-wrap{display:flex;align-items:center;gap:16px}
-  .ring{position:relative;width:96px;height:96px;flex:none}
+  .pill-toggle button.active{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+  /* Three columns */
+  .cols3{display:grid;grid-template-columns:1fr;gap:0}
+  .col{padding:18px 0}
+  .col + .col{border-top:1px solid var(--border)}
+  @media(min-width:820px){
+    .cols3{grid-template-columns:1fr 1fr 1fr}
+    .col{padding:6px 28px}
+    .col:first-child{padding-left:0}
+    .col + .col{border-top:0;border-left:1px solid var(--border)}
+    .col:last-child{padding-right:0}
+  }
+  .col-label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--muted);font-weight:600}
+  .col-label .pct{color:var(--green);font-weight:700}
+  .big-serif{font-family:var(--serif);font-weight:700;font-size:46px;letter-spacing:-.5px;margin:8px 0 4px;line-height:1.05}
+  .sub{font-size:14px;color:var(--muted);margin:0}
+  .bar{height:10px;background:var(--amber-track);border-radius:999px;overflow:hidden;margin-top:14px}
+  .bar > div{height:100%;background:linear-gradient(90deg,#e8930c,#d97706);border-radius:999px}
+  .mini-row{display:flex;gap:36px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+  .mini .n{font-size:21px;font-weight:800;letter-spacing:-.3px}
+  .mini .l{font-size:13px;color:var(--muted);margin-top:2px}
+  .sync-note{font-size:13px;color:var(--muted);margin-top:14px}
+
+  /* Sleep stacked bar */
+  .stackbar{display:flex;height:10px;border-radius:999px;overflow:hidden;margin-top:14px;background:var(--amber-track)}
+  .stackbar div{height:100%}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--muted)}
+  .legend .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+
+  /* Ring */
+  .ring-wrap{display:flex;align-items:center;gap:18px;padding:10px 0}
+  .ring{position:relative;width:104px;height:104px;flex:none}
   .ring svg{transform:rotate(-90deg)}
-  .ring .center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
-  .ring .center .big{font-size:22px;font-weight:800}
+  .ring .center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+  .ring .center .big{font-family:var(--serif);font-weight:700;font-size:21px;line-height:1.1}
   .ring .center .small{font-size:11px;color:var(--muted)}
-  .meal{border-top:1px solid var(--track);padding:12px 0}
-  .meal:first-of-type{border-top:0;padding-top:0}
-  .meal-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+
+  /* Sections */
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin:36px 0 4px}
+  .section-head h2{font-family:var(--serif);font-weight:700;font-size:27px;letter-spacing:-.4px;margin:0}
+  .section-head .muted-right{font-size:13px;color:var(--muted)}
+  .cards4{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+  @media(min-width:820px){.cards4{grid-template-columns:repeat(4,1fr)}}
+  .sig-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .sig-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .sig-label{font-size:14px;font-weight:700}
+  .sig-target{font-size:12px;color:var(--muted);white-space:nowrap}
+  .sig-big{font-family:var(--serif);font-weight:700;font-size:33px;letter-spacing:-.4px;margin:10px 0 4px}
+  .sig-muted{font-size:13px;color:var(--muted);margin:0}
+  .sig-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .tag{font-size:12px;background:#f6f1e5;border:1px solid var(--border);color:#5c5546;border-radius:999px;padding:3px 11px}
+  .up-bar{position:relative;height:8px;background:var(--amber-track);border-radius:999px;margin-top:14px}
+  .up-fill{position:absolute;left:0;top:0;bottom:0;background:var(--amber);border-radius:999px}
+  .up-marker{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+
+  /* Plants */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{font-size:13px;background:#f8f3e7;border:1px solid var(--border);border-radius:999px;padding:5px 13px}
+
+  /* Nutrients */
+  .nutri-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  @media(min-width:820px){.nutri-grid{grid-template-columns:repeat(3,1fr)}}
+  .nutri{background:#fbf8f0;border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+  .nutri .n{font-weight:700;font-size:14px}
+  .nutri .p{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--amber);margin:3px 0}
+  .nutri .p small{font-size:11px;font-family:var(--sans);font-weight:400}
+  .nutri .t{font-size:12px;color:var(--muted)}
+  .caveat{font-size:12px;color:var(--muted);font-style:italic;margin:12px 0 0}
+
+  /* Food log */
+  .meal{border-top:1px solid var(--border);padding:14px 0}
+  .meal:first-of-type{border-top:0;padding-top:4px}
+  .meal-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
   .meal-head .name{font-weight:800;font-size:16px}
   .meal-head .macros{font-size:13px;color:var(--muted);white-space:nowrap}
-  .meal ul{margin:6px 0 0;padding-left:18px;font-size:14px;color:#333}
+  .meal ul{margin:6px 0 0;padding-left:18px;font-size:14px;color:#3a362e}
   .meal li{margin:3px 0}
-  .flags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
-  .flag{font-size:12px;background:var(--amber-soft);border:1px solid var(--amber-border);color:#7a4a00;border-radius:999px;padding:3px 10px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-size:13px;background:var(--amber-soft);border:1px solid var(--amber-border);border-radius:999px;padding:5px 12px}
-  .nutri-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .nutri{background:var(--amber-soft);border:1px solid var(--amber-border);border-radius:12px;padding:10px 12px}
-  .nutri .n{font-weight:800;font-size:14px}
-  .nutri .p{font-size:16px;font-weight:800;color:var(--amber);margin:2px 0}
-  .nutri .t{font-size:12px;color:var(--muted)}
-  .caveat{font-size:12px;color:var(--muted);margin:10px 0 0;font-style:italic}
-  .sleep-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
-  .sleep-grid .stat .num{font-size:20px}
-  footer{margin-top:20px;font-size:12px;color:var(--muted);text-align:center}
+  .flags{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
+  .flag{font-size:12px;background:#fef3e2;border:1px solid #f3d9a8;color:#7a4a00;border-radius:999px;padding:3px 11px}
+
+  footer{margin-top:28px;font-size:12px;color:var(--faint);text-align:center}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="page">
-    <h1>Health Tracker</h1>
-    <div class="rule"></div>
-    <p class="updated" id="updated">Loading…</p>
+
+  <header class="page-head">
+    <div class="head-row">
+      <h1>Today at a glance.</h1>
+      <div class="head-meta">
+        <div class="week-range" id="week-range">–</div>
+        <div class="updated" id="updated">Loading…</div>
+      </div>
+    </div>
+    <div class="green-rule"></div>
     <div class="stale-note" id="stale-note">Couldn't reach the latest data — showing the last saved snapshot.</div>
   </header>
 
-  <section class="card" id="summary">
-    <div class="toggle" role="tablist">
-      <button id="tab-day" class="active" type="button">Day</button>
-      <button id="tab-week" type="button">Week</button>
+  <section class="card" id="health-summary">
+    <div class="card-top">
+      <span class="label">Health summary</span>
+      <div class="pill-toggle" role="tablist">
+        <button id="tab-day" class="active" type="button">Day</button>
+        <button id="tab-week" type="button">Week</button>
+      </div>
     </div>
-    <div id="panel-day"></div>
+    <div id="panel-day" class="cols3"></div>
     <div id="panel-week" style="display:none"></div>
   </section>
 
-  <section class="card" id="food">
-    <h2>Food log</h2>
-    <div id="meals"></div>
-  </section>
+  <div class="section-head">
+    <h2>Daily nutrition signals</h2>
+    <span class="muted-right">Compact checks for consistency, gut support, and food quality</span>
+  </div>
+  <div class="cards4" id="signal-cards"></div>
 
-  <section class="card" id="plants">
+  <div class="section-head">
     <h2>Plant diversity</h2>
+    <span class="muted-right" id="plant-sub">Distinct plants logged this week · each counts once</span>
+  </div>
+  <section class="card" style="margin-top:14px" id="plants-card">
     <div id="plant-summary"></div>
-    <div class="chips" id="plant-chips" style="margin-top:12px"></div>
+    <div class="chips" id="plant-chips"></div>
   </section>
 
-  <section class="card" id="activity">
-    <h2>Activity</h2>
-    <div class="stat-row" id="activity-stats"></div>
-  </section>
-
-  <section class="card" id="sleep">
-    <h2>Sleep <span style="font-weight:400;font-size:13px;color:var(--muted)">· last night</span></h2>
-    <div id="sleep-main"></div>
-    <div class="sleep-grid" id="sleep-grid" style="margin-top:10px"></div>
-  </section>
-
-  <section class="card" id="nutrients">
+  <div class="section-head">
     <h2>Key nutrients</h2>
+    <span class="muted-right">Directional daily estimates</span>
+  </div>
+  <section class="card" style="margin-top:14px" id="nutrients-card">
     <div class="nutri-grid" id="nutri-grid"></div>
     <p class="caveat">Directional estimates based on logged foods — not precise measurements.</p>
+  </section>
+
+  <div class="section-head">
+    <h2>Food log</h2>
+    <span class="muted-right" id="foodlog-sub"></span>
+  </div>
+  <section class="card" style="margin-top:14px" id="foodlog-card">
+    <div id="food-meals"></div>
   </section>
 
   <footer>Health Tracker · updates every 30 min</footer>
@@ -134,8 +207,8 @@
 <script>
 /* Fallback snapshot baked in so the page still renders from file:// or offline.
    Fresh data is fetched from ./meals.json and ./health.json when hosted. */
-const FALLBACK_MEALS = {"date":"2026-10-15","day":{"calories":1617,"meals":[{"calories":780,"flags":["simple carbs (donut)"],"items":["3 fried eggs (~270 cal, ~19g protein)","4 fingerling potatoes (~130 cal, ~3g protein)","1 apple cider donut (~380 cal, ~4g protein)"],"name":"Breakfast","protein":26},{"calories":120,"flags":[],"items":["12 oz with regular milk"],"name":"Cappuccino","protein":8},{"calories":717,"flags":["contains gluten (flour/panko)"],"items":["Chicken schnitzel (~350 cal, ~35g protein)","Golden turmeric rice (~220 cal, ~4g protein)","Iceberg/carrot/cucumber salad (~25 cal, ~1g protein)","Tzatziki (~40 cal, ~4g protein)","Sunflower seeds, half serving (~82 cal, ~3g protein)"],"name":"Lunch","protein":47}],"protein":81},"nutrients":[{"name":"Fiber","note":"chickpeas, peas, vegetables","pct":"30-40%"},{"name":"Calcium","note":"tzatziki, yogurt","pct":"20-30%"},{"name":"Iron","note":"chicken, chickpeas, sesame","pct":"35-45%"},{"name":"Potassium","note":"potatoes, cucumber","pct":"40-50%"},{"name":"Vitamin D","note":"eggs; low - consider sun/supplement","pct":"10-15%"},{"name":"Omega-3","note":"eggs, seeds","pct":"15-25%"}],"proteinGoal":160,"updated":"2026-10-15T13:30:00-04:00","week":{"plantGoal":30,"plantList":["chickpea (chana dal)","peas","carrots","fingerling potato","apple","coffee","basmati rice","turmeric","black pepper","cumin","olive oil","wheat","sesame seed","mustard seed","canola oil","iceberg lettuce","cucumber","garlic","shallot","lemon","dill","mint","sunflower seed"],"plants":23}};
-const FALLBACK_HEALTH = {"activeKcal":75,"date":"2026-10-15","distanceKm":1.86,"sleep":{"asleepHrs":9.6,"bedtime":"10:20 PM","deepMin":108,"efficiency":92.6,"note":"restless until ~2 AM","remMin":143,"wake":"8:41 AM"},"steps":2693,"updated":"2026-10-15T13:30:00-04:00"};
+const FALLBACK_MEALS = {"date":"2026-10-15","day":{"calories":1647,"meals":[{"calories":780,"flags":["simple carbs (donut)"],"items":["3 fried eggs (~270 cal, ~19g protein)","4 fingerling potatoes (~130 cal, ~3g protein)","1 apple cider donut (~380 cal, ~4g protein)"],"name":"Breakfast","protein":26},{"calories":120,"flags":[],"items":["12 oz with regular milk"],"name":"Cappuccino","protein":8},{"calories":717,"flags":["contains gluten (flour/panko)"],"items":["Chicken schnitzel (~350 cal, ~35g protein)","Golden turmeric rice (~220 cal, ~4g protein)","Iceberg/carrot/cucumber salad (~25 cal, ~1g protein)","Tzatziki (~40 cal, ~4g protein)","Sunflower seeds, half serving (~82 cal, ~3g protein)"],"name":"Lunch","protein":47},{"name":"Snack","items":["Cantaloupe, ~1/2 cup cubed"],"calories":30,"protein":1,"flags":[]}],"protein":82},"nutrients":[{"name":"Fiber","note":"chickpeas, peas, vegetables","pct":"30-40%"},{"name":"Calcium","note":"tzatziki, yogurt","pct":"20-30%"},{"name":"Iron","note":"chicken, chickpeas, sesame","pct":"35-45%"},{"name":"Potassium","note":"potatoes, cucumber","pct":"40-50%"},{"name":"Vitamin D","note":"eggs; low - consider sun/supplement","pct":"10-15%"},{"name":"Omega-3","note":"eggs, seeds","pct":"15-25%"}],"proteinGoal":160,"updated":"2026-10-15T14:20:00-04:00","week":{"plantGoal":30,"plantList":["chickpea (chana dal)","peas","carrots","fingerling potato","apple","coffee","basmati rice","turmeric","black pepper","cumin","olive oil","wheat","sesame seed","mustard seed","canola oil","iceberg lettuce","cucumber","garlic","shallot","lemon","dill","mint","sunflower seed","cantaloupe"],"plants":24}};
+const FALLBACK_HEALTH = {"updated":"2026-10-15T15:00:20-04:00","date":"2026-10-15","steps":3296,"activeKcal":97.2,"distanceKm":2.28,"sleep":{"bedtime":"10:20 PM","wake":"8:41 AM","asleepHrs":9.6,"deepMin":108,"remMin":139,"efficiency":92.6,"note":"restless until ~2 AM"}};
 </script>
 <script src="./app.js"></script>
 </body>
