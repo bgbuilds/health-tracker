@@ -1,10 +1,10 @@
 {
   "date": "2026-10-16",
   "day": {
-    "calories": 465,
-    "protein": 28,
-    "carbs": 9,
-    "fat": 34,
+    "calories": 735,
+    "protein": 39,
+    "carbs": 37,
+    "fat": 47,
     "caffeineMg": 0,
     "meals": [
       {
@@ -23,6 +23,22 @@
         "flags": [
           "estimated - no published nutrition"
         ]
+      },
+      {
+        "name": "Snack - Italian combo square",
+        "items": [
+          "Italian combo on rosemary focaccia (1 small square)",
+          "Pepperoni, hard salami, black forest ham",
+          "Mozzarella, red pepper mayo"
+        ],
+        "calories": 270,
+        "protein": 11,
+        "carbs": 28,
+        "fat": 13,
+        "flags": [
+          "gluten (focaccia)",
+          "estimated"
+        ]
       }
     ]
   },
@@ -34,8 +50,8 @@
     },
     {
       "name": "Calcium",
-      "pct": "~10%",
-      "note": "eggs, greens (low)"
+      "pct": "10-15%",
+      "note": "eggs, greens, mozzarella"
     },
     {
       "name": "Iron",
@@ -59,7 +75,7 @@
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T10:20:27-04:00",
+  "updated": "2026-10-16T13:13:14-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
