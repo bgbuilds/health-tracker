@@ -1,171 +1,47 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "day": {
-    "calories": 3397,
-    "meals": [
-      {
-        "calories": 780,
-        "flags": [
-          "simple carbs (donut)"
-        ],
-        "items": [
-          "3 fried eggs (~270 cal, ~19g protein)",
-          "4 fingerling potatoes (~130 cal, ~3g protein)",
-          "1 apple cider donut (~380 cal, ~4g protein)"
-        ],
-        "name": "Breakfast",
-        "protein": 26,
-        "carbs": 51,
-        "fat": 41
-      },
-      {
-        "calories": 120,
-        "flags": [],
-        "items": [
-          "12 oz with regular milk"
-        ],
-        "name": "Cappuccino",
-        "protein": 8,
-        "carbs": 10,
-        "fat": 5
-      },
-      {
-        "calories": 717,
-        "flags": [
-          "contains gluten (flour/panko)"
-        ],
-        "items": [
-          "Chicken schnitzel (~350 cal, ~35g protein)",
-          "Golden turmeric rice (~220 cal, ~4g protein)",
-          "Iceberg/carrot/cucumber salad (~25 cal, ~1g protein)",
-          "Tzatziki (~40 cal, ~4g protein)",
-          "Sunflower seeds, half serving (~82 cal, ~3g protein)"
-        ],
-        "name": "Lunch",
-        "protein": 47,
-        "carbs": 71,
-        "fat": 22
-      },
-      {
-        "name": "Snack",
-        "items": [
-          "Cantaloupe, ~1/2 cup cubed"
-        ],
-        "calories": 30,
-        "protein": 1,
-        "flags": [],
-        "carbs": 7,
-        "fat": 0
-      },
-      {
-        "name": "Cappuccinos (2)",
-        "items": [
-          "2x 12 oz with regular milk"
-        ],
-        "calories": 240,
-        "protein": 16,
-        "flags": [],
-        "carbs": 20,
-        "fat": 10
-      },
-      {
-        "name": "LUNA Lemon Zest bar",
-        "items": [
-          "1 bar (48g)"
-        ],
-        "calories": 190,
-        "protein": 8,
-        "flags": [
-          "ultra-processed (packaged bar)"
-        ],
-        "carbs": 28,
-        "fat": 6
-      },
-      {
-        "name": "Dinner",
-        "items": [
-          "Roast chicken, ~5 oz (~230 cal, ~38g protein)",
-          "1 hard boiled egg (~70 cal, ~6g protein)",
-          "Shredded carrot (~15 cal, ~1g protein)",
-          "Celery (~5 cal)",
-          "Cucumber (~10 cal)",
-          "Romaine (~15 cal, ~1g protein)",
-          "Spicy coconut dressing, ~2 tbsp (~95 cal, ~1g protein)"
-        ],
-        "calories": 440,
-        "protein": 46,
-        "flags": [],
-        "carbs": 15,
-        "fat": 21
-      },
-      {
-        "name": "Snack",
-        "items": [
-          "ONLY Snacks crunchy roasted edamame, sea salt (1 pack)"
-        ],
-        "calories": 120,
-        "protein": 14,
-        "flags": [],
-        "carbs": 9,
-        "fat": 3.5
-      },
-      {
-        "name": "Dinner 2",
-        "items": [
-          "Glaze Teriyaki double salmon bowl",
-          "salad base",
-          "half portion brown rice",
-          "teriyaki sauce (estimated ~2 tbsp)"
-        ],
-        "calories": 760,
-        "protein": 60,
-        "flags": [
-          "simple carbs (teriyaki sauce)",
-          "estimated"
-        ],
-        "carbs": 51,
-        "fat": 30
-      }
-    ],
-    "protein": 226,
-    "caffeineMg": 450,
-    "carbs": 262,
-    "fat": 139
+    "calories": 0,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 0,
+    "caffeineMg": 0,
+    "meals": []
   },
   "nutrients": [
     {
       "name": "Fiber",
       "note": "chickpeas, peas, vegetables",
-      "pct": "30-40%"
+      "pct": "0%"
     },
     {
       "name": "Calcium",
       "note": "tzatziki, yogurt",
-      "pct": "20-30%"
+      "pct": "0%"
     },
     {
       "name": "Iron",
       "note": "chicken, chickpeas, sesame",
-      "pct": "35-45%"
+      "pct": "0%"
     },
     {
       "name": "Potassium",
       "note": "potatoes, cucumber",
-      "pct": "40-50%"
+      "pct": "0%"
     },
     {
       "name": "Vitamin D",
       "note": "eggs; low - consider sun/supplement",
-      "pct": "10-15%"
+      "pct": "0%"
     },
     {
       "name": "Omega-3",
       "note": "eggs, seeds",
-      "pct": "15-25%"
+      "pct": "0%"
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-15T19:26:56-04:00",
+  "updated": "2026-10-16T10:10:00-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
@@ -200,6 +76,17 @@
       "coconut",
       "chili"
     ],
-    "plants": 30
+    "plants": 30,
+    "days": [
+      {
+        "date": "2026-10-15",
+        "calories": 3397,
+        "protein": 226,
+        "carbs": 262,
+        "fat": 139,
+        "caffeineMg": 450,
+        "meals": 9
+      }
+    ]
   }
 }

@@ -254,13 +254,33 @@
 
     /* ---- Health summary: Week panel ---- */
     var wPct = wk.plants / wk.plantGoal;
-    document.getElementById("panel-week").innerHTML =
+    var weekHtml =
       '<div class="ring-wrap">' +
       ring(wPct, wk.plants + " / " + wk.plantGoal, "plants") +
       '<div><div style="font-weight:800;font-size:16px">Plant diversity</div>' +
       '<div style="font-size:13px;color:#6f695c;margin-top:4px">' +
       (wk.plantGoal - wk.plants) + " more plants to hit this week's goal of " + wk.plantGoal + ".</div></div>" +
       "</div>";
+
+    /* Weekly daily totals */
+    var wdays = wk.days || [];
+    if (wdays.length > 0) {
+      var totCal = 0, totPro = 0;
+      wdays.forEach(function (d) { totCal += d.calories || 0; totPro += d.protein || 0; });
+      var avgCal = Math.round(totCal / wdays.length), avgPro = Math.round(totPro / wdays.length);
+      weekHtml += '<div style="margin-top:18px"><div style="font-weight:800;font-size:16px;margin-bottom:8px">Daily totals this week</div>';
+      wdays.forEach(function (d) {
+        var dLabel = d.date ? d.date.slice(5).replace("-", "/") : "";
+        weekHtml += '<div class="mini-row" style="margin-bottom:6px">' +
+          '<div class="mini"><div class="l">' + esc(dLabel) + '</div></div>' +
+          '<div class="mini"><div class="n">~' + (d.calories || 0).toLocaleString() + '</div><div class="l">cal</div></div>' +
+          '<div class="mini"><div class="n">' + (d.protein || 0) + 'g</div><div class="l">protein</div></div>' +
+          "</div>";
+      });
+      weekHtml += '<div style="font-size:13px;color:#6f695c;margin-top:8px">' +
+        wdays.length + "-day average: ~" + avgCal.toLocaleString() + " cal, " + avgPro + "g protein.</div></div>";
+    }
+    document.getElementById("panel-week").innerHTML = weekHtml;
 
     var tDay = document.getElementById("tab-day"),
         tWeek = document.getElementById("tab-week");
