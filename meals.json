@@ -1,9 +1,9 @@
 {
   "date": "2026-10-16",
   "day": {
-    "calories": 1455,
-    "protein": 105,
-    "carbs": 78,
+    "calories": 1508,
+    "protein": 106,
+    "carbs": 92,
     "fat": 75,
     "caffeineMg": 435,
     "meals": [
@@ -81,6 +81,17 @@
         "carbs": 3,
         "fat": 2,
         "flags": []
+      },
+      {
+        "name": "Snack - Half banana",
+        "items": [
+          "1/2 banana"
+        ],
+        "calories": 53,
+        "protein": 1,
+        "carbs": 14,
+        "fat": 0,
+        "flags": []
       }
     ]
   },
@@ -102,8 +113,8 @@
     },
     {
       "name": "Potassium",
-      "pct": "20-25%",
-      "note": "avocado, mushrooms, eggs, bok choy"
+      "pct": "25-30%",
+      "note": "avocado, mushrooms, eggs, bok choy, banana"
     },
     {
       "name": "Vitamin D",
@@ -117,7 +128,7 @@
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T13:53:30-04:00",
+  "updated": "2026-10-16T17:50:53-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
@@ -154,9 +165,10 @@
       "mushroom",
       "avocado",
       "bok choy",
-      "ginger"
+      "ginger",
+      "banana"
     ],
-    "plants": 34,
+    "plants": 35,
     "days": [
       {
         "date": "2026-10-15",
