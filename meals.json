@@ -1,11 +1,11 @@
 {
   "date": "2026-10-16",
   "day": {
-    "calories": 1410,
-    "protein": 103,
-    "carbs": 75,
-    "fat": 73,
-    "caffeineMg": 285,
+    "calories": 1455,
+    "protein": 105,
+    "carbs": 78,
+    "fat": 75,
+    "caffeineMg": 435,
     "meals": [
       {
         "name": "Breakfast - Banter NYC",
@@ -67,6 +67,19 @@
         "protein": 1,
         "carbs": 2,
         "fat": 0,
+        "flags": [],
+        "time": "10:00 AM"
+      },
+      {
+        "name": "Coffee - Cortado",
+        "time": "1:53 PM",
+        "items": [
+          "Regular cortado (double espresso + steamed milk)"
+        ],
+        "calories": 45,
+        "protein": 2,
+        "carbs": 3,
+        "fat": 2,
         "flags": []
       }
     ]
@@ -104,7 +117,7 @@
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T13:48:50-04:00",
+  "updated": "2026-10-16T13:53:30-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
