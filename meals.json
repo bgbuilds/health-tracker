@@ -29,37 +29,37 @@
   "nutrients": [
     {
       "name": "Fiber",
-      "note": "chickpeas, peas, vegetables",
-      "pct": "0%"
+      "pct": "10-15%",
+      "note": "avocado, mushrooms, greens"
     },
     {
       "name": "Calcium",
-      "note": "tzatziki, yogurt",
-      "pct": "0%"
+      "pct": "~10%",
+      "note": "eggs, greens (low)"
     },
     {
       "name": "Iron",
-      "note": "chicken, chickpeas, sesame",
-      "pct": "0%"
+      "pct": "35-45%",
+      "note": "eggs, bacon, greens, mushrooms"
     },
     {
       "name": "Potassium",
-      "note": "potatoes, cucumber",
-      "pct": "0%"
+      "pct": "15-20%",
+      "note": "avocado, mushrooms, eggs"
     },
     {
       "name": "Vitamin D",
-      "note": "eggs; low - consider sun/supplement",
-      "pct": "0%"
+      "pct": "15-20%",
+      "note": "eggs; low - consider sun/supplement"
     },
     {
       "name": "Omega-3",
-      "note": "eggs, seeds",
-      "pct": "0%"
+      "pct": "~10%",
+      "note": "eggs (low)"
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T10:17:08-04:00",
+  "updated": "2026-10-16T10:20:27-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
