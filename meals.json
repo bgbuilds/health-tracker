@@ -1,12 +1,30 @@
 {
   "date": "2026-10-16",
   "day": {
-    "calories": 0,
-    "protein": 0,
-    "carbs": 0,
-    "fat": 0,
+    "calories": 465,
+    "protein": 28,
+    "carbs": 9,
+    "fat": 34,
     "caffeineMg": 0,
-    "meals": []
+    "meals": [
+      {
+        "name": "Breakfast - Banter NYC",
+        "items": [
+          "Golden folded eggs (~3 eggs scrambled)",
+          "2 strips bacon",
+          "1/4 avocado",
+          "Sauteed mushrooms",
+          "Mixed greens"
+        ],
+        "calories": 465,
+        "protein": 28,
+        "carbs": 9,
+        "fat": 34,
+        "flags": [
+          "estimated - no published nutrition"
+        ]
+      }
+    ]
   },
   "nutrients": [
     {
@@ -41,7 +59,7 @@
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T10:10:00-04:00",
+  "updated": "2026-10-16T10:17:08-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
@@ -74,9 +92,11 @@
       "chicory",
       "celery",
       "coconut",
-      "chili"
+      "chili",
+      "mushroom",
+      "avocado"
     ],
-    "plants": 30,
+    "plants": 32,
     "days": [
       {
         "date": "2026-10-15",
