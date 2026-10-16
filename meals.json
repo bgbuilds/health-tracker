@@ -1,11 +1,11 @@
 {
   "date": "2026-10-16",
   "day": {
-    "calories": 1385,
-    "protein": 102,
-    "carbs": 73,
+    "calories": 1410,
+    "protein": 103,
+    "carbs": 75,
     "fat": 73,
-    "caffeineMg": 0,
+    "caffeineMg": 285,
     "meals": [
       {
         "name": "Breakfast - Banter NYC",
@@ -55,6 +55,19 @@
         "flags": [
           "estimated"
         ]
+      },
+      {
+        "name": "Coffee - Dunkin",
+        "items": [
+          "Medium hot coffee",
+          "Shot of espresso",
+          "Splash of skim milk"
+        ],
+        "calories": 25,
+        "protein": 1,
+        "carbs": 2,
+        "fat": 0,
+        "flags": []
       }
     ]
   },
@@ -91,7 +104,7 @@
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T13:43:41-04:00",
+  "updated": "2026-10-16T13:48:50-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
