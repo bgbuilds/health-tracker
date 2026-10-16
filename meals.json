@@ -1,10 +1,10 @@
 {
   "date": "2026-10-16",
   "day": {
-    "calories": 1265,
-    "protein": 78,
+    "calories": 1385,
+    "protein": 102,
     "carbs": 73,
-    "fat": 72,
+    "fat": 73,
     "caffeineMg": 0,
     "meals": [
       {
@@ -45,12 +45,13 @@
         "items": [
           "Gochujang sesame chicken thigh (~6oz, crispy)",
           "Steamed bok choy",
-          "Rice avoided (few bites)"
+          "Rice avoided (few bites)",
+          "10 steamed shrimp"
         ],
-        "calories": 530,
-        "protein": 39,
+        "calories": 650,
+        "protein": 63,
         "carbs": 36,
-        "fat": 25,
+        "fat": 26,
         "flags": [
           "estimated"
         ]
@@ -85,12 +86,12 @@
     },
     {
       "name": "Omega-3",
-      "pct": "~10%",
-      "note": "eggs (low)"
+      "pct": "10-15%",
+      "note": "eggs (low), shrimp"
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T13:34:43-04:00",
+  "updated": "2026-10-16T13:43:41-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
