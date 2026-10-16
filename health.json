@@ -1,1 +1,1 @@
-{"activeKcal": 454.2, "date": "2026-10-15", "distanceKm": 8.32, "sleep": {"asleepHrs": 9.6, "bedtime": "10:20 PM", "deepMin": 108, "efficiency": 92.6, "note": "restless until ~2 AM", "remMin": 139, "wake": "8:41 AM"}, "steps": 11095, "updated": "2026-10-15T21:50:45-04:00"}
+{"updated": "2026-10-16T02:10:40+00:00", "date": "2026-10-15", "steps": 11095, "activeKcal": 454.2, "distanceKm": 8.32, "sleep": {"bedtime": "10:20 PM", "wake": "8:41 AM", "asleepHrs": 9.6, "deepMin": 108, "remMin": 139, "efficiency": 92.6, "note": "restless until ~2 AM"}}
