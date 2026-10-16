@@ -1,10 +1,10 @@
 {
   "date": "2026-10-16",
   "day": {
-    "calories": 735,
-    "protein": 39,
-    "carbs": 37,
-    "fat": 47,
+    "calories": 1265,
+    "protein": 78,
+    "carbs": 73,
+    "fat": 72,
     "caffeineMg": 0,
     "meals": [
       {
@@ -39,14 +39,29 @@
           "gluten (focaccia)",
           "estimated"
         ]
+      },
+      {
+        "name": "Lunch - Gochujang sesame chicken",
+        "items": [
+          "Gochujang sesame chicken thigh (~6oz, crispy)",
+          "Steamed bok choy",
+          "Rice avoided (few bites)"
+        ],
+        "calories": 530,
+        "protein": 39,
+        "carbs": 36,
+        "fat": 25,
+        "flags": [
+          "estimated"
+        ]
       }
     ]
   },
   "nutrients": [
     {
       "name": "Fiber",
-      "pct": "10-15%",
-      "note": "avocado, mushrooms, greens"
+      "pct": "15-20%",
+      "note": "avocado, mushrooms, greens, bok choy"
     },
     {
       "name": "Calcium",
@@ -55,13 +70,13 @@
     },
     {
       "name": "Iron",
-      "pct": "35-45%",
-      "note": "eggs, bacon, greens, mushrooms"
+      "pct": "45-55%",
+      "note": "eggs, bacon, greens, mushrooms, chicken thigh"
     },
     {
       "name": "Potassium",
-      "pct": "15-20%",
-      "note": "avocado, mushrooms, eggs"
+      "pct": "20-25%",
+      "note": "avocado, mushrooms, eggs, bok choy"
     },
     {
       "name": "Vitamin D",
@@ -75,7 +90,7 @@
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T13:13:14-04:00",
+  "updated": "2026-10-16T13:34:43-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
@@ -110,9 +125,11 @@
       "coconut",
       "chili",
       "mushroom",
-      "avocado"
+      "avocado",
+      "bok choy",
+      "ginger"
     ],
-    "plants": 32,
+    "plants": 34,
     "days": [
       {
         "date": "2026-10-15",
