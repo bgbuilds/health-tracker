@@ -1,134 +1,47 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-17",
   "day": {
-    "calories": 1508,
-    "protein": 106,
-    "carbs": 92,
-    "fat": 75,
-    "caffeineMg": 435,
-    "meals": [
-      {
-        "name": "Breakfast - Banter NYC",
-        "items": [
-          "Golden folded eggs (~3 eggs scrambled)",
-          "2 strips bacon",
-          "1/4 avocado",
-          "Sauteed mushrooms",
-          "Mixed greens"
-        ],
-        "calories": 465,
-        "protein": 28,
-        "carbs": 9,
-        "fat": 34,
-        "flags": [
-          "estimated - no published nutrition"
-        ]
-      },
-      {
-        "name": "Snack - Italian combo square",
-        "items": [
-          "Italian combo on rosemary focaccia (1 small square)",
-          "Pepperoni, hard salami, black forest ham",
-          "Mozzarella, red pepper mayo"
-        ],
-        "calories": 270,
-        "protein": 11,
-        "carbs": 28,
-        "fat": 13,
-        "flags": [
-          "gluten (focaccia)",
-          "estimated"
-        ]
-      },
-      {
-        "name": "Lunch - Gochujang sesame chicken",
-        "items": [
-          "Gochujang sesame chicken thigh (~6oz, crispy)",
-          "Steamed bok choy",
-          "Rice avoided (few bites)",
-          "10 steamed shrimp"
-        ],
-        "calories": 650,
-        "protein": 63,
-        "carbs": 36,
-        "fat": 26,
-        "flags": [
-          "estimated"
-        ]
-      },
-      {
-        "name": "Coffee - Dunkin",
-        "items": [
-          "Medium hot coffee",
-          "Shot of espresso",
-          "Splash of skim milk"
-        ],
-        "calories": 25,
-        "protein": 1,
-        "carbs": 2,
-        "fat": 0,
-        "flags": [],
-        "time": "10:00 AM"
-      },
-      {
-        "name": "Coffee - Cortado",
-        "time": "1:53 PM",
-        "items": [
-          "Regular cortado (double espresso + steamed milk)"
-        ],
-        "calories": 45,
-        "protein": 2,
-        "carbs": 3,
-        "fat": 2,
-        "flags": []
-      },
-      {
-        "name": "Snack - Half banana",
-        "items": [
-          "1/2 banana"
-        ],
-        "calories": 53,
-        "protein": 1,
-        "carbs": 14,
-        "fat": 0,
-        "flags": []
-      }
-    ]
+    "calories": 0,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 0,
+    "caffeineMg": 0,
+    "meals": []
   },
   "nutrients": [
     {
       "name": "Fiber",
-      "pct": "15-20%",
+      "pct": "0%",
       "note": "avocado, mushrooms, greens, bok choy"
     },
     {
       "name": "Calcium",
-      "pct": "10-15%",
+      "pct": "0%",
       "note": "eggs, greens, mozzarella"
     },
     {
       "name": "Iron",
-      "pct": "45-55%",
+      "pct": "0%",
       "note": "eggs, bacon, greens, mushrooms, chicken thigh"
     },
     {
       "name": "Potassium",
-      "pct": "25-30%",
+      "pct": "0%",
       "note": "avocado, mushrooms, eggs, bok choy, banana"
     },
     {
       "name": "Vitamin D",
-      "pct": "15-20%",
+      "pct": "0%",
       "note": "eggs; low - consider sun/supplement"
     },
     {
       "name": "Omega-3",
-      "pct": "10-15%",
+      "pct": "0%",
       "note": "eggs (low), shrimp"
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-16T17:50:53-04:00",
+  "updated": "2026-10-17T00:00:21-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
@@ -178,6 +91,15 @@
         "fat": 139,
         "caffeineMg": 450,
         "meals": 9
+      },
+      {
+        "date": "2026-10-16",
+        "calories": 1508,
+        "protein": 106,
+        "carbs": 92,
+        "fat": 75,
+        "caffeineMg": 435,
+        "meals": 6
       }
     ]
   }
