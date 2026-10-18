@@ -1,16 +1,16 @@
 {
-  "activeKcal": 37.2,
+  "updated": "2026-10-17T20:10:55-04:00",
   "date": "2026-10-17",
+  "steps": 1218,
+  "activeKcal": 37.2,
   "distanceKm": 0.81,
   "sleep": {
-    "asleepHrs": 9.2,
     "bedtime": "11:52 PM",
+    "wake": "9:08 AM",
+    "asleepHrs": 9.2,
     "deepMin": 71,
-    "efficiency": 99.3,
-    "note": "",
     "remMin": 171,
-    "wake": "9:08 AM"
-  },
-  "steps": 1218,
-  "updated": "2026-10-17T19:50:08-04:00"
+    "efficiency": 99.3,
+    "note": ""
+  }
 }
