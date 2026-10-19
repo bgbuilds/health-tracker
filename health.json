@@ -1,8 +1,6 @@
 {
-  "updated": "2026-10-19T02:10:28-04:00",
-  "date": "2026-10-19",
-  "steps": 0,
   "activeKcal": 0,
+  "date": "2026-10-19",
   "distanceKm": 0.0,
   "sleep": {
     "asleepHrs": 9.2,
@@ -12,5 +10,7 @@
     "note": "",
     "remMin": 171,
     "wake": "9:08 AM"
-  }
+  },
+  "steps": 0,
+  "updated": "2026-10-19T03:00:15-04:00"
 }
