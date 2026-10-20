@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "day": {
     "calories": 0,
     "protein": 0,
@@ -41,7 +41,7 @@
     }
   ],
   "proteinGoal": 160,
-  "updated": "2026-10-19T00:00:53-04:00",
+  "updated": "2026-10-20T00:02:38-04:00",
   "week": {
     "plantGoal": 50,
     "plantList": [
@@ -112,6 +112,15 @@
       },
       {
         "date": "2026-10-18",
+        "calories": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0,
+        "caffeineMg": 0,
+        "meals": 0
+      },
+      {
+        "date": "2026-10-19",
         "calories": 0,
         "protein": 0,
         "carbs": 0,
